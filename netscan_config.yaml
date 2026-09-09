@@ -1,0 +1,53 @@
+# Netscan Configuration File
+
+# Core settings
+core:
+  log_level: "INFO"
+  timeout: 2
+  max_threads: 100
+  maximum_scan_hosts: 65536
+  rate_limit_per_minute: 45
+
+# Scanner settings
+scanner:
+  # Ports to scan. If empty, the default internal list in port_scan.py will be used.
+  ports: [21, 22, 23, 25, 53, 80, 110, 111, 135, 139, 143, 443, 445, 993, 995, 1723, 3306, 3389, 5900, 8080, 8443]
+  
+  # Excluded IP addresses or CIDR blocks (will be skipped during scan)
+  exclude_ips: []
+
+# IoT Detection settings
+iot:
+  ports: [554, 1883, 8080, 80, 443, 37777, 8000, 34567, 81, 82]
+  mac_oui: 
+    - "Espressif"
+    - "Raspberry Pi"
+    - "Tuya"
+    - "Sonoff"
+    - "Amazon"
+    - "Google"
+    - "Ring"
+    - "Dahua"
+    - "Hikvision"
+    - "Axis"
+    - "Panasonic"
+    - "Sony"
+
+# Threat Intelligence (AbuseIPDB)
+threat_intel:
+  # Get a free API key at https://www.abuseipdb.com/api
+  abuseipdb_key: ""
+
+# Continuous Network Monitoring
+monitoring:
+  interval: 300  # Seconds between scans (default: 5 minutes)
+
+# Data Enrichment
+enrichment:
+  whois_enabled: true
+
+# Custom Scan Profiles (optional — overrides defaults)
+# scanner:
+#   active_profile: "Web Only"
+#   profiles:
+#     "My Custom Scan": [80, 443, 22, 8080]
